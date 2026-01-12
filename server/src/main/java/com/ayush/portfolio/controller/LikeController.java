@@ -10,7 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/likes")
-@CrossOrigin(allowedOriginPatterns = "*") 
+@CrossOrigin(origins = "*", allowCredentials = "false")
 public class LikeController {
     
     private final LikeService likeService;
