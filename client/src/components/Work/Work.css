@@ -1,0 +1,235 @@
+.work-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+  animation: fadeIn 0.8s ease;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.bento-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  transition: transform 0.2s ease;
+}
+
+.bento-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.bento-card h2, .bento-card h3 {
+    margin-top: 0;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.main-section {
+    background: linear-gradient(to bottom right, #ffffff, #fcfcfc);
+}
+
+.section-block {
+    margin-bottom: 1.5rem;
+}
+
+.divider {
+    height: 1px;
+    background: #eee;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.job-entry {
+    margin-bottom: 1rem;
+}
+
+.job-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+}
+
+.job-header h3 { margin: 0; font-size: 1.1rem; color: #333; }
+
+.company-tag {
+    background: #eef2ff;
+    color: #4f46e5;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.grade-tag {
+    background: #ecfdf5;
+    color: #059669;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.job-duration {
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.job-description {
+    line-height: 1.6;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.fun-note {
+    margin-top: 20px;
+    color: #666;
+    font-style: italic;
+    background: #f9fafb;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 3px solid #ccc;
+}
+
+.tech-card {
+    background: #fafafa;
+}
+
+.icons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.tech-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #444;
+    transition: all 0.2s;
+    position: relative;
+    cursor: default;
+}
+
+.tech-item:hover {
+    border-color: #ccc;
+    transform: translateY(-2px);
+}
+
+.tech-item::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #333;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 10;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.tech-item:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tech-item svg { font-size: 1.1rem; }
+
+.links-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    background: #fff;
+    border: 1px solid #eee;
+}
+
+.link-icon {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+}
+
+.link-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.link-info strong { font-size: 0.95rem; }
+.link-info small { color: #888; font-size: 0.8rem; }
+
+.arrow {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.2s ease;
+    font-weight: bold;
+}
+
+.profile-link.linkedin:hover { background: #eef7fe; border-color: #0077b5; }
+.profile-link.linkedin .link-icon { color: #0077b5; }
+
+.profile-link.leetcode:hover { background: #fffbeb; border-color: #f7b926; }
+.profile-link.leetcode .link-icon { color: #f7b926; }
+
+.profile-link.github:hover { background: #f0f0f0; border-color: #333; }
+.profile-link.github .link-icon { color: #333; }
+
+.profile-link:hover .arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tech-item::before {
+        display: none;
+    }
+}

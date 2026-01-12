@@ -1,0 +1,22 @@
+.main-container {
+  padding-top: 120px; 
+  
+  max-width: 1200px;  
+  margin: 0 auto;     
+  
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 4rem;
+
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.main-container {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
