@@ -7,17 +7,31 @@ const LikeButton = ({ disabled }) => {
   const [hasLiked, setHasLiked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Clean Way: Use the variable (which is ...onrender.com)
-  const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8081';
+  // 1. Helper function to ensure the URL is always correct
+  const getBackendUrl = () => {
+    let url = import.meta.env.VITE_API_URL || 'http://localhost:8081';
+    
+    // Remove trailing slash if it exists (fixes the double-slash issue)
+    if (url.endsWith('/')) {
+      url = url.slice(0, -1);
+    }
+    
+    // Always return the full path to the endpoint
+    return `${url}/api/likes`;
+  };
+
+  const ENDPOINT = getBackendUrl();
 
   useEffect(() => {
-    // We add the missing endpoint here
-    axios.get(`${BASE_URL}/api/likes`)
+    // Debugging: This will show you exactly what URL is being hit
+    console.log("FINAL URL being requested:", ENDPOINT);
+
+    axios.get(ENDPOINT)
         .then((response) => {
             setIsLoading(false);
         })
         .catch(error => {
-            console.error(error);
+            console.error("GET Error:", error);
             setIsLoading(false);
         }); 
   }, []);
@@ -27,10 +41,10 @@ const LikeButton = ({ disabled }) => {
 
     setHasLiked(true);
 
-    axios.post(`${BASE_URL}/api/likes`)
+    axios.post(ENDPOINT)
         .then(() => console.log("Like recorded"))
         .catch(err => {
-          console.error(err);
+          console.error("POST Error:", err);
           setHasLiked(false);
         });
   };
