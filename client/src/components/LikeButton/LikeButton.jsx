@@ -7,10 +7,10 @@ const LikeButton = ({ disabled }) => {
   const [hasLiked, setHasLiked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8081';
+  const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8081';
 
   useEffect(() => {
-    axios.get(API_URL)
+    axios.get(`${BASE_URL}/api/likes`)
         .then(() => {
             setIsLoading(false);
         })
@@ -25,7 +25,7 @@ const LikeButton = ({ disabled }) => {
 
     setHasLiked(true);
 
-    axios.post(API_URL)
+    axios.post(`${BASE_URL}/api/likes`)
         .then(() => console.log("Like recorded"))
         .catch(err => {
           console.log(err);
