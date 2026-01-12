@@ -32,9 +32,9 @@ public class LikeController {
         return new ResponseEntity<>(Collections.singletonMap("count", newCount), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/reset")
-    public String resetLikes() {
-        likeService.clearAllLikes();
-        return "Database cleared successfully!";
-    }
+//    @DeleteMapping("/reset")
+//    public String resetLikes() {
+//        likeService.clearAllLikes();
+//        return "Database cleared successfully!";
+//    }
 }
