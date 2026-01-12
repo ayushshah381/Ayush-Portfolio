@@ -52,7 +52,8 @@ const Navbar = () => {
                                     )}
 
                                     <span style={{ position: 'relative', zIndex: 2, display:'flex', gap:'6px', alignItems:'center' }}>
-                                        {tab.icon} {tab.label}
+                                        {tab.icon}
+                                        <span className="nav-label">{tab.label}</span>
                                     </span>
                                 </Link>
                             </li>

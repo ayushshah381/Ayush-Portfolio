@@ -91,3 +91,33 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: -1;
 }
+
+@media (max-width: 768px) {
+  .navbar-container {
+    min-width: unset;
+    width: 90%;
+    top: 15px;
+  }
+
+  .navbar {
+    padding: 0.5rem 0.75rem;
+    justify-content: space-between;
+  }
+
+  .navbar-logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-label {
+    display: none;
+  }
+
+  .nav-item {
+    padding: 10px;
+    font-size: 1.1rem;
+  }
+
+  .nav-list {
+    gap: 2px;
+  }
+}
