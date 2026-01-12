@@ -7,7 +7,7 @@ const LikeButton = ({ disabled }) => {
   const [hasLiked, setHasLiked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const API_URL = 'http://localhost:8081/api/likes';
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8081';
 
   useEffect(() => {
     axios.get(API_URL)
