@@ -7,15 +7,21 @@ const LikeButton = ({ disabled }) => {
   const [hasLiked, setHasLiked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8081';
+  // NUCLEAR OPTION: Hardcoding the full backend URL for testing.
+  // This guarantees we are hitting the right endpoint.
+  const FULL_URL = 'https://portfolio-backend-552v.onrender.com/api/likes';
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/api/likes`)
-        .then(() => {
+    console.log("Fetching likes from:", FULL_URL); // Debug log
+
+    axios.get(FULL_URL)
+        .then((response) => {
+            // Check what data we actually get
+            console.log("Data received:", response.data); 
             setIsLoading(false);
         })
         .catch(error => {
-            console.log(error);
+            console.error("GET Error:", error);
             setIsLoading(false);
         }); 
   }, []);
@@ -25,10 +31,10 @@ const LikeButton = ({ disabled }) => {
 
     setHasLiked(true);
 
-    axios.post(`${BASE_URL}/api/likes`)
-        .then(() => console.log("Like recorded"))
+    axios.post(FULL_URL)
+        .then(() => console.log("Like recorded successfully"))
         .catch(err => {
-          console.log(err);
+          console.error("POST Error:", err);
           setHasLiked(false);
         });
   };
