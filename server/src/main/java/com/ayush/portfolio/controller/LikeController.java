@@ -31,4 +31,10 @@ public class LikeController {
         Long newCount = likeService.getTotalLikes();
         return new ResponseEntity<>(Collections.singletonMap("count", newCount), HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/reset")
+    public String resetLikes() {
+        likeService.clearAllLikes();
+        return "Database cleared successfully!";
+    }
 }

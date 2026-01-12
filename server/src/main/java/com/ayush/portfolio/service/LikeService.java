@@ -22,4 +22,8 @@ public class LikeService {
     public Long getTotalLikes() {
         return repository.count();
     }
+
+    public void clearAllLikes() {
+        repository.deleteAll();
+    }
 }
