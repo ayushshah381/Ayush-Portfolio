@@ -16,6 +16,10 @@ const Chess = () => {
   const USERNAME = "balor381";
 
   useEffect(() => {
+    document.title = "Chess | Ayush Shah";
+  }, []);
+
+  useEffect(() => {
     const fetchChessStats = async () => {
       try {
         const response = await fetch(

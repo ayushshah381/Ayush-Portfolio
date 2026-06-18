@@ -27,24 +27,17 @@ const Navbar = () => {
                 <ul className="nav-list" onMouseLeave={() => setHoveredTab(null)}>
                     {tabs.map((tab) => {
                         const isActive = location.pathname === tab.id;
+                        const showPill = hoveredTab === tab.id || (isActive && hoveredTab === null);
 
                         return (
-                            <li key={tab.id} style={{ position: 'relative'}}> 
+                            <li key={tab.id} style={{ position: 'relative'}}>
                                 <Link
                                     to={tab.id}
                                     className={`nav-item ${isActive ? 'active' : ''}`}
                                     onMouseEnter={() => setHoveredTab(tab.id)}
                                 >
-                                    {hoveredTab === tab.id && (
-                                        <motion.div 
-                                            layoutId="nav-pill"
-                                            className="nav-pill"
-                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                        />
-                                    )}
-
-                                    {isActive && hoveredTab === null && (
-                                        <motion.div 
+                                    {showPill && (
+                                        <motion.div
                                             layoutId="nav-pill"
                                             className="nav-pill"
                                             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
@@ -57,7 +50,7 @@ const Navbar = () => {
                                     </span>
                                 </Link>
                             </li>
-                        )    
+                        );
                     })}
                 </ul>
             </nav>

@@ -4,6 +4,14 @@
   font-weight: 400;
   background: linear-gradient(to top left, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
   color: #213547;
+
+  --color-text-primary: #222;
+  --color-text-secondary: #555;
+  --color-text-muted: #888;
+  --color-accent-blue: #3b82f6;
+  --color-accent-chess: #779556;
+  --color-border: rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 body {
@@ -16,4 +24,9 @@ body {
 #root {
   width: 100%;
   min-height: 100vh;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -3,31 +3,24 @@ import React, { useEffect, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import './LikeButton.css';
 
+const getBackendUrl = () => {
+  let url = import.meta.env.VITE_API_URL || 'http://localhost:8081';
+  if (url.endsWith('/')) {
+    url = url.slice(0, -1);
+  }
+  return `${url}/api/likes`;
+};
+
+const ENDPOINT = getBackendUrl();
+
 const LikeButton = ({ disabled }) => {
   const [hasLiked, setHasLiked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const getBackendUrl = () => {
-    let url = import.meta.env.VITE_API_URL || 'http://localhost:8081';
-    
-    // Remove trailing slash if it exists to prevent double-slash errors
-    if (url.endsWith('/')) {
-      url = url.slice(0, -1);
-    }
-    
-    return `${url}/api/likes`;
-  };
-
-  const ENDPOINT = getBackendUrl();
-
   useEffect(() => {
     axios.get(ENDPOINT)
-        .then(() => {
-            setIsLoading(false);
-        })
-        .catch(() => {
-            setIsLoading(false);
-        }); 
+      .then(() => setIsLoading(false))
+      .catch(() => setIsLoading(false));
   }, []);
 
   const handleLike = () => {
@@ -36,9 +29,9 @@ const LikeButton = ({ disabled }) => {
     setHasLiked(true);
 
     axios.post(ENDPOINT)
-        .catch(() => {
-          setHasLiked(false);
-        });
+      .catch(() => {
+        setHasLiked(false);
+      });
   };
 
   const isLikedState = hasLiked || disabled;
